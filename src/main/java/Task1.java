@@ -1,8 +1,7 @@
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Stack;
 
-public class MyApp {
+/*Очередь с помощью двух стеков*/
+public class Task1 {
     public static void main(String[] args) {
         MyQueue myQueue = new MyQueue();
         myQueue.push(1);
@@ -11,8 +10,6 @@ public class MyApp {
         myQueue.push(4);
         System.out.println(myQueue.pop());
         System.out.println(myQueue.pop());
-
-
     }
 
     static class MyQueue {
