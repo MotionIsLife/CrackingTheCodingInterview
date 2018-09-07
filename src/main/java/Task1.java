@@ -1,40 +1,30 @@
-import java.util.Stack;
+import java.util.Random;
 
-/*Очередь с помощью двух стеков*/
 public class Task1 {
     public static void main(String[] args) {
-        MyQueue myQueue = new MyQueue();
-        myQueue.push(1);
-        myQueue.push(2);
-        myQueue.push(3);
-        myQueue.push(4);
-        System.out.println(myQueue.pop());
-        System.out.println(myQueue.pop());
-    }
-
-    static class MyQueue {
-        private Stack<Integer> s1 = new Stack<Integer>();
-        private Stack<Integer> s2 = new Stack<Integer>();
-
-        public MyQueue() {
-        }
-
-        public void push(int value) {
-            s1.push(value);
-        }
-
-        public Integer pop() {
-            this.shift();
-            return s2.pop();
-        }
-
-        private void shift() {
-            if(!s2.empty()) {
-                return;
+        int size = 7;
+        Random random = new Random();
+        int[][] mas = new int[size][size];
+        for(int i = 0; i < size; i++) {
+            for (int j = 0; j < size; j++) {
+                mas[i][j] = random.nextInt(51) - 30;
+                System.out.print(mas[i][j] + "\t");
             }
-            while (!s1.empty()) {
-                s2.push(s1.pop());
-            }
+            System.out.println();
         }
+        int max = mas[0][0];
+        int barrier = size - 1;
+        for (int i = 0; i < size; i++) {
+            for (int j = 0; j < size; j++) {
+                if(j <= barrier) {
+                    if(mas[i][j] > max) {
+                        max = mas[i][j];
+                    }
+
+                }
+            }
+            --barrier;
+        }
+        System.out.println("max = " + max);
     }
 }
